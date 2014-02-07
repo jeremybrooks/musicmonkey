@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+#
+# You must either have java in your path, or you must edit this script
+# to use your installed java.
+
+# HME Factory options
+# If you have more than one network interface on this machine, 
+# use the -i option to specify which interface to bind to
+#OPTIONS="-i 192.168.69.150"
+#OPTIONS="-i 192.168.8.187"
+
+java -cp lib/jid3lib-0.5.jar:lib/hme.jar:lib/log4j.jar:lib/JID3.jar:lib/musicmonkey.jar:. com.tivo.hme.sdk.Factory $OPTIONS net.whirljack.tivohme.musicmonkey.MusicMonkey
+

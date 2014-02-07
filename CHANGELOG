@@ -1,0 +1,13 @@
+Version 1.2:
+Now using version 1.2.0 of the HME SDK library.
+Fixed bug 1213130 (Artist hint not shown in two player game.)
+Fixed bug 1213131 (Monkey not shown at end of two player game.)
+
+
+Version 1.1:
+Now using the JID3 mp3 tag library from blinkenlights.org (http://jid3.blinkenlights.org).  This fixes the problem where Windows machines could not read mp3 tags.
+Version 2 ID3 tags are now used if availble, otherwise Version 1 ID3 tags are used.
+
+
+Version 1.0:
+First public release.

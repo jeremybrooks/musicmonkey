@@ -1,0 +1,142 @@
+<!--
+*****************************************************
+*  File: build.xml
+*
+*  Build the Music Monkey application.
+*
+******************************************************
+-->
+<project name="Music Monkey" default="jar">
+
+  <property name="app.name" value="musicmonkey"/>
+  <property name="app.version" value="1.2"/>
+  <property name="src" value="src"/>
+  <property name="debug.compile" value="true"/>
+  <property name="optimize.compile" value="false"/>
+  <property name="build.dir" value="build"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="dist.dir" value="dist"/>
+
+
+  <path id="cp">
+    <fileset dir="${lib.dir}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+
+  <!-- Compile the program. -->
+  <target name="compile" depends="init" description="Compile source.">
+    <javac
+     srcdir="${src}"
+     destdir="${build.dir}/classes"
+     deprecation="true"
+     debug="${debug.compile}"
+     optimize="${optimize.compile}"
+     classpathref="cp"/>
+  </target>
+
+
+  <!-- Create the musicmonkey jar file from compiled classes. -->
+  <target name="jar" depends="compile" description="Create jar from compiled classes.">
+    
+    <!-- copy the icon -->
+    <copy file="images/icon.png" todir="${build.dir}/classes/net/whirljack/tivohme/musicmonkey/"/>
+
+    <jar jarfile="${build.dir}/lib/${app.name}.jar">
+      <fileset dir="${build.dir}/classes"/>
+      <manifest>
+        <attribute name="Main-Class" value="com.tivo.hme.sdk.Factory"/>
+      </manifest>
+    </jar>
+  </target>
+
+
+  <!-- Create a distribution archive. -->
+  <target name="dist" depends="jar" description="Create a distribution">
+    <mkdir dir="${dist.dir}"/>
+    <mkdir dir="${dist.dir}/${app.name}-${app.version}"/>
+    <mkdir dir="${dist.dir}/${app.name}-${app.version}/lib"/>
+    <mkdir dir="${dist.dir}/${app.name}-${app.version}/tunes"/>
+    <mkdir dir="${dist.dir}/${app.name}-${app.version}/logs"/>
+    <mkdir dir="${dist.dir}/${app.name}-${app.version}/doc"/>
+
+    <!-- copy license, readme, etc -->
+    <copy file="README" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <copy file="COPYING" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <copy file="build.xml" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <copy file="RELEASE_NOTES" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <copy file="CHANGELOG" todir="${dist.dir}/${app.name}-${app.version}"/>
+
+    
+
+    <!-- copy the application jar file -->
+    <copy file="${build.dir}/lib/${app.name}.jar" todir="${dist.dir}/${app.name}-${app.version}/lib"/>
+
+    <!-- copy the scripts -->
+    <copy file="${app.name}" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <copy file="${app.name}.bat" todir="${dist.dir}/${app.name}-${app.version}"/>
+    <exec dir="${dist.dir}/${app.name}-${app.version}" executable="chmod">
+    	<arg line="a+x musicmonkey"/>
+    </exec>
+    
+    <!-- copy config file -->
+    <copy file="${app.name}.properties" todir="${dist.dir}/${app.name}-${app.version}"/>
+
+    <!-- copy images -->
+    <copy todir="${dist.dir}/${app.name}-${app.version}/images">
+      <fileset dir="images">
+        <include name="*.png"/>
+      </fileset>
+    </copy>
+
+    <!-- copy the libraries -->
+    <copy todir="${dist.dir}/${app.name}-${app.version}/lib">
+    	<fileset dir="${lib.dir}">
+          <include name="*.jar"/>
+	</fileset>
+    </copy>
+
+    <!-- copy the documentation -->
+    <copy todir="${dist.dir}/${app.name}-${app.version}/doc">
+    	<fileset dir="doc">
+	  <include name="**/*"/>
+	</fileset>
+    </copy>
+
+    <!-- copy source -->
+    <copy todir="${dist.dir}/${app.name}-${app.version}/src">
+        <fileset dir="src">
+	  <include name="**/*"/>
+	</fileset>
+    </copy>
+
+    <!-- make the distribution files -->
+    <exec dir="${dist.dir}" executable="zip">
+    	<arg line="-r ../${app.name}-${app.version}.zip ${app.name}-${app.version}"/>
+    </exec>
+    <exec dir="${dist.dir}" executable="tar">
+    	<arg line="czf ../${app.name}-${app.version}.tar.gz ${app.name}-${app.version}"/>
+    </exec>
+
+  </target>
+
+
+
+  <!-- Prepare for compilation -->
+  <target name="init" description="Prepare for compilation.">
+    <tstamp/>
+    <mkdir dir="${build.dir}/classes"/>
+    <mkdir dir="${build.dir}/lib"/>
+  </target>
+
+
+  <!-- Cleanup -->
+  <target name="clean" description="Delete everything to prepare for clean build.">
+    <delete dir="${build.dir}"/>
+    <delete dir="${dist.dir}"/>
+    <delete file="${app.name}.jar"/>
+  </target>
+
+</project>
+

@@ -1,0 +1,11 @@
+Version 1.2:
+This release fixes a couple of bugs related to two player games.  Hints are now shown properly, and the winning monkey is shown. 
+This release also incorporates version 1.2.0 of the HME SDK.
+
+Version 1.1:
+This release fixes the problem with Windows machines not being able to read mp3 tags.  If the mp3 file has Version 2 ID3 tags, those are used; otherwise Version 1 ID3 tags are used.
+
+Version 1.0:
+This is the first public release of MusicMonkey.  There may be issues running on Windows machines (cannot read ID3 tags from mp3 files).  This seems to be an issue with the tag library, and is being researched.
+
+

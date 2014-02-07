@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="EnterHighScoreView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="EnterHighScoreView"/>
+    </fileobject>
+    <fileobject name="HelpView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="HelpView"/>
+    </fileobject>
+    <fileobject name="HighScore.java">
+        <attr name="class_dependency_java.io.Serializable" stringvalue="HighScore"/>
+    </fileobject>
+    <fileobject name="HighScoreComparator.java">
+        <attr name="class_dependency_java.io.Serializable" stringvalue="HighScoreComparator"/>
+        <attr name="class_dependency_java.util.Comparator" stringvalue="HighScoreComparator"/>
+    </fileobject>
+    <fileobject name="HighScoreView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="HighScoreView"/>
+        <attr name="class_dependency_com.tivo.hme.util.Ticker.Client" stringvalue="HighScoreView"/>
+    </fileobject>
+    <fileobject name="MenuItemView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="MenuItemView"/>
+    </fileobject>
+    <fileobject name="OnePlayerGameTypeView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="OnePlayerGameTypeView"/>
+    </fileobject>
+    <fileobject name="OnePlayerView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="OnePlayerView"/>
+        <attr name="class_dependency_com.tivo.hme.util.Ticker.Client" stringvalue="OnePlayerView"/>
+    </fileobject>
+    <fileobject name="TextBoxView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="TextBoxView"/>
+    </fileobject>
+    <fileobject name="Track.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="Track"/>
+    </fileobject>
+    <fileobject name="TwoPlayerGameTypeView.java">
+        <attr name="class_dependency_com.tivo.hme.sdk.View" stringvalue="TwoPlayerGameTypeView"/>
+    </fileobject>
+</attributes>
