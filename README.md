@@ -1,6 +1,8 @@
 MusicMonkey
 ===========
 
+Music Monkey won "Best Music Application" in the 2005 TiVo Developer Challenge!
+
 This is a music quiz game written in Java. It uses the TiVo HME platform. It may or may not still work, but you're welcome to try. 
 
 HTML documentation is available in the doc directory.
